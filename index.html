@@ -5,6 +5,9 @@
     <title>Rear camera demo</title>
 </head>
 <body>
+    <h1>Reference:</h1>
+    <a href="https://davidwalsh.name/browser-camera">https://davidwalsh.name/browser-camera</a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia">https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia</a>
     <video id="video" width="640" height="480" autoplay></video>
     <button id="snap">Snap Photo</button>
     <canvas id="canvas" width="640" height="480"></canvas>
@@ -16,7 +19,7 @@
         // Get access to the camera!
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             // Not adding `{ audio: true }` since we only want video now
-            navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } } }).then(function(stream) {
+            navigator.mediaDevices.getUserMedia({ video: { width: { min: 1024, ideal: 1280, max: 1920 }, height: { min: 776, ideal: 720, max: 1080 }, facingMode: { exact: "environment" } } }).then(function(stream) {
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
             });
